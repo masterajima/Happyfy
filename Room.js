@@ -19,4 +19,9 @@ let participantConnected=(participants)=>{
     
     ;}
     );}
-Video.connect(token,{name:roomName})
+Video.connect(token,{name:roomName}).then((room)=>{setRoom(room);
+room.on("participantConnected",participantConnected);
+room.on("participantDisconnected",participantDisconnected);
+room.participant.forEach(participantConnected)
+});
+
